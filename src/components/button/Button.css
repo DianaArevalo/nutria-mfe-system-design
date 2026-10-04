@@ -1,0 +1,85 @@
+.nutria-button {
+  font-family: var(--nutria-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: var(--nutria-space-2) var(--nutria-space-4);
+  border-radius: var(--nutria-radius-md);
+  border: var(--nutria-border-width) solid transparent;
+  cursor: pointer;
+  transition: background-color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out),
+              border-color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out),
+              color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out),
+              box-shadow var(--nutria-transition-duration-fast) var(--nutria-ease-in-out);
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nutria-space-2);
+  box-sizing: border-box;
+}
+
+/* Focus visible for accessibility */
+.nutria-button:focus-visible {
+  outline: var(--nutria-focus-outline-width) solid var(--nutria-color-accent);
+  outline-offset: var(--nutria-focus-outline-offset);
+}
+
+/* Disabled state */
+.nutria-button:disabled,
+.nutria-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary variant */
+.nutria-button--primary {
+  background-color: var(--nutria-color-accent);
+  color: var(--nutria-color-paper-raised);
+  border-color: var(--nutria-color-accent);
+}
+
+.nutria-button--primary:hover:not(:disabled):not([disabled]) {
+  background-color: color-mix(in srgb, var(--nutria-color-accent) 90%, black 10%);
+  border-color: color-mix(in srgb, var(--nutria-color-accent) 90%, black 10%);
+}
+
+.nutria-button--primary:active:not(:disabled):not([disabled]) {
+  background-color: color-mix(in srgb, var(--nutria-color-accent) 85%, black 15%);
+  border-color: color-mix(in srgb, var(--nutria-color-accent) 85%, black 15%);
+}
+
+/* Outline variant */
+.nutria-button--outline {
+  background-color: transparent;
+  color: var(--nutria-color-ink);
+  border-color: var(--nutria-color-line);
+}
+
+.nutria-button--outline:hover:not(:disabled):not([disabled]) {
+  background-color: var(--nutria-color-accent-soft);
+  border-color: var(--nutria-color-accent);
+}
+
+.nutria-button--outline:active:not(:disabled):not([disabled]) {
+  background-color: color-mix(in srgb, var(--nutria-color-accent-soft) 85%, black 15%);
+  border-color: color-mix(in srgb, var(--nutria-color-accent) 85%, black 15%);
+}
+
+/* Danger Outline variant */
+.nutria-button--danger-outline {
+  background-color: transparent;
+  color: var(--nutria-color-danger);
+  border-color: var(--nutria-color-danger-soft);
+}
+
+.nutria-button--danger-outline:hover:not(:disabled):not([disabled]) {
+  background-color: var(--nutria-color-danger-soft);
+  border-color: var(--nutria-color-danger);
+}
+
+.nutria-button--danger-outline:active:not(:disabled):not([disabled]) {
+  background-color: color-mix(in srgb, var(--nutria-color-danger-soft) 85%, black 15%);
+  border-color: color-mix(in srgb, var(--nutria-color-danger) 85%, black 15%);
+}

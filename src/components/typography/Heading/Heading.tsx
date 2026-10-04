@@ -17,7 +17,14 @@ export const Heading: React.FC<HeadingProps> = ({
   const Component = level as keyof JSX.IntrinsicElements;
   return React.createElement(
     Component,
-    { className: 'nutria-heading ' + 'nutria-heading--' + level + ' ' + className, ...props },
+    { className: 
+      'nutria-heading ' +
+      'nutria-heading--' + 
+      level + 
+      ' ' + 
+      className, 
+      ...props 
+    },
     children
   );
 };

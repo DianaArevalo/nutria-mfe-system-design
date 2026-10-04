@@ -1,23 +1,23 @@
-# nutria-mfe-system-design
+Ôªø# nutria-mfe-system-design
 
 Design System oficial de NUTRIA. Provee identidad visual y tokens reutilizables para los proyectos frontend de NUTRIA.
 
 ## Design Tokens
 
-Los Design Tokens son variables sem·nticas que centralizan decisiones visuales (colores, tipografÌas, espaciados, radios, etc.). Su objetivo es garantizar consistencia visual, facilitar el mantenimiento y evitar hardcodear valores en componentes.
+Los Design Tokens son variables sem√°nticas que centralizan decisiones visuales (colores, tipograf√≠as, espaciados, radios, etc.). Su objetivo es garantizar consistencia visual, facilitar el mantenimiento y evitar hardcodear valores en componentes.
 
-### UbicaciÛn
+### Ubicaci√≥n
 
 Los tokens se encuentran definidos en src/styles/tokens/:
 
-- colors.css - Paleta crom·tica base
-- 	ypography.css - Familias tipogr·ficas (--nutria-font-display, --nutria-font-body, --nutria-font-mono)
+- colors.css - Paleta crom√°tica base
+- 	ypography.css - Familias tipogr√°ficas (--nutria-font-display, --nutria-font-body, --nutria-font-mono)
 - spacing.css - Escala coherente de espaciados
 - adius.css - Tokens de border-radius
 - misc.css - Valores visuales reutilizables (border-width, focus outline, transiciones)
 - index.css - Punto de entrada que importa todos los tokens
 
-Los estilos globales que cargan los tokens est·n disponibles en:
+Los estilos globales que cargan los tokens est√°n disponibles en:
 - src/styles/index.css
 - src/styles/global.css
 
@@ -25,14 +25,14 @@ Los estilos globales que cargan los tokens est·n disponibles en:
 
 Los tokens se definen como variables CSS globales (:root) y pueden consumirse desde cualquier componente CSS/SCSS al importar los estilos del paquete.
 
-Desde la librerÌa, se exporta tambiÈn la ruta de estilos a travÈs de exports:
+Desde la librer√≠a, se exporta tambi√©n la ruta de estilos a trav√©s de exports:
 
 \\\js
-// Importar tokens globalmente en la aplicaciÛn
+// Importar tokens globalmente en la aplicaci√≥n
 import '@nutria/design-system/styles';
 \\\
 
-O importando el archivo especÌfico:
+O importando el archivo espec√≠fico:
 
 \\\js
 import '@nutria/design-system/dist/styles/tokens/index.css';
@@ -43,9 +43,30 @@ import '@nutria/design-system/dist/styles/tokens/index.css';
 Todos los tokens usan el prefijo --nutria- para asegurar namespace y evitar colisiones:
 
 - Colores: --nutria-color-* (ej. --nutria-color-ink, --nutria-color-accent, --nutria-color-success)
-- TipografÌa: --nutria-font-* (ej. --nutria-font-display, --nutria-font-body, --nutria-font-mono)
+- Tipograf√≠a: --nutria-font-* (ej. --nutria-font-display, --nutria-font-body, --nutria-font-mono)
 - Espaciado: --nutria-space-* (escala 0,1,2,3,...)
 - Radios: --nutria-radius-*
-- Miscel·neos: --nutria-border-width-*, --nutria-focus-outline-*, --nutria-transition-*
+- Miscel√°neos: --nutria-border-width-*, --nutria-focus-outline-*, --nutria-transition-*
 
-Los nombres son agnÛsticos del dominio (no incluyen conceptos como "afiliado", "aporte", "empresa", etc.) para mantener el Design System reutilizable.
+Los nombres son agn√≥sticos del dominio (no incluyen conceptos como "afiliado", "aporte", "empresa", etc.) para mantener el Design System reutilizable.
+
+
+## Button
+
+Componente Button reutilizable con variantes definidas seg√∫n el dise√±o visual de NUTRIA. Utiliza Design Tokens existentes.
+
+### Variantes disponibles
+
+- primary - Bot√≥n principal con fondo accent (por defecto)
+- outline - Bot√≥n con borde y fondo transparente
+- danger-outline - Bot√≥n para acciones destructivas con estilo outline
+
+### Importaci√≥n
+``tsx
+import { Button } from '@nutria/design-system';``r
+
+### Ejemplos de uso
+``tsx
+<Button variant="primary">Editar afiliado</Button>
+<Button variant="outline">Ver historial laboral</Button>
+<Button variant="danger-outline">Desactivar</Button>``
