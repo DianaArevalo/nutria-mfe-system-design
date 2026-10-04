@@ -1,0 +1,7 @@
+:root {
+  /* Typography tokens - NutrIA Design System */
+  --nutria-font-display: 'Fraunces', serif;
+  --nutria-font-body: 'IBM Plex Sans', sans-serif;
+  --nutria-font-mono: 'IBM Plex Mono', monospace;
+}
+

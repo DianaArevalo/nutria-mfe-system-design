@@ -1,0 +1,18 @@
+:root {
+  /* Color tokens - NutrIA Design System */
+  --nutria-color-ink: #1B2430;
+  --nutria-color-ink-soft: #5B6470;
+  --nutria-color-paper: #F3F4EC;
+  --nutria-color-paper-raised: #FFFFFF;
+  --nutria-color-line: #DDDFCF;
+  --nutria-color-accent: #0F5C52;
+  --nutria-color-accent-soft: #E4EEEA;
+  --nutria-color-amber: #B4791F;
+  --nutria-color-amber-soft: #FBF0DE;
+  --nutria-color-success: #2F7A4F;
+  --nutria-color-success-soft: #E7F3EC;
+  --nutria-color-danger: #B23A34;
+  --nutria-color-danger-soft: #FBEAE9;
+  --nutria-color-stripe: #EEF2E8;
+}
+

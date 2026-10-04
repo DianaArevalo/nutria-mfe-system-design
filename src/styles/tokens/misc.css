@@ -1,0 +1,13 @@
+:root {
+  /* Miscellaneous visual tokens - NutrIA Design System */
+  --nutria-border-width: 1px;
+  --nutria-border-width-thick: 2px;
+  --nutria-focus-outline-width: 2px;
+  --nutria-focus-outline-offset: 2px;
+  --nutria-transition-duration-fast: 150ms;
+  --nutria-transition-duration-base: 200ms;
+  --nutria-transition-duration-slow: 300ms;
+  --nutria-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --nutria-ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+

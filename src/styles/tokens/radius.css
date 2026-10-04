@@ -1,0 +1,10 @@
+:root {
+  /* Border radius tokens - NutrIA Design System */
+  --nutria-radius-none: 0px;
+  --nutria-radius-sm: 0.25rem;
+  --nutria-radius-md: 0.5rem;
+  --nutria-radius-lg: 0.75rem;
+  --nutria-radius-xl: 1rem;
+  --nutria-radius-full: 9999px;
+}
+
