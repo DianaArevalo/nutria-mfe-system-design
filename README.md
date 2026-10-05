@@ -225,3 +225,79 @@ import { Avatar } from '@nutria/design-system';
 ```
 
 Ejemplo completo en src/examples/AvatarExample.tsx.
+## Progress
+
+Componente Progress reutilizable para representar el avance de una tarea. Muestra una barra cuyo ancho es un **valor derivado** de las props `value` y `max`. Es presentacional, agnóstico del dominio y no contiene estado interno. Utiliza Design Tokens existentes.
+
+### Props
+
+| Prop        | Tipo                                   | Default | Descripcion                                                             |
+| ----------- | -------------------------------------- | ------- | ----------------------------------------------------------------------- |
+| `value`     | `number`                               | `0`     | Valor actual. Se limita visualmente al rango `0` - `max`                |
+| `max`       | `number`                               | `100`   | Valor máximo de referencia. Si es `<= 0` se usa `100` para evitar dividir entre cero |
+| `label`     | `string`                               | -       | Texto visible de la barra y nombre accesible del `progressbar`          |
+| `showValue` | `boolean`                              | `false` | Muestra el porcentaje actual junto al label                             |
+| `className` | `string`                               | `''`    | Clases adicionales, se concatenan a `nutria-progress`                   |
+| ...rest     | `React.HTMLAttributes<HTMLDivElement>` | -       | Atributos HTML del `<div>` contenedor: `id`, `data-*`, `style`, ...     |
+
+### Estado vs valor derivado
+
+El porcentaje **no** se guarda en estado, se calcula a partir de las props:
+
+```tsx
+percentage = (value / max) * 100; // acotado entre 0 y 100
+```
+
+| `value` | `max` | Resultado       |
+| ------- | ----- | --------------- |
+| `0`     | `100` | `0%`            |
+| `25`    | `100` | `25%`           |
+| `50`    | `100` | `50%`           |
+| `75`    | `100` | `75%`           |
+| `100`   | `100` | `100%`          |
+| `150`   | `100` | `100%` (acotado) |
+| `-10`   | `100` | `0%` (acotado)  |
+
+`value` es estado o prop. `percentage` es un valor derivado: no necesita estado propio porque siempre se recalcula en el render.
+
+### Accesibilidad
+
+La barra usa `role="progressbar"` con `aria-valuemin`, `aria-valuemax` y `aria-valuenow`, y toma `label` como nombre accesible. Cuando `showValue={false}` el porcentaje no se muestra visualmente pero sigue disponible para lectores de pantalla.
+
+### Importación
+
+```tsx
+import { Progress } from '@nutria/design-system';
+```
+
+### Ejemplos de uso
+
+```tsx
+<Progress value={0} />
+<Progress value={50} />
+<Progress value={100} />
+
+<Progress value={65} label="Progreso de afiliación" showValue />
+```
+
+### Ejemplo interactivo con useState
+
+El estado vive en `ProgressExample`, no en `Progress`. `useState` guarda el valor actual y `Progress` recibe el cambio por props:
+
+```tsx
+const [value, setValue] = useState(60);
+
+<Button variant="outline" onClick={() => setValue(prev => Math.max(0, prev - 10))}>
+  -10
+</Button>
+
+<Button variant="outline" onClick={() => setValue(prev => Math.min(100, prev + 10))}>
+  +10
+</Button>
+
+<Progress value={value} label="Progreso de afiliación" showValue />
+```
+
+Flujo: click -> `setValue(prev => ...)` con actualización funcional -> React actualiza el estado -> `ProgressExample` vuelve a renderizar -> `Progress` recibe un nuevo `value` por props -> recalcula el `percentage` -> la barra se actualiza.
+
+Ejemplo completo en src/examples/ProgressExample.tsx.

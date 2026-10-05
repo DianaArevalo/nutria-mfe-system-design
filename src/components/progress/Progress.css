@@ -1,0 +1,40 @@
+.nutria-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nutria-space-2);
+  box-sizing: border-box;
+}
+
+.nutria-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--nutria-space-2);
+}
+
+.nutria-progress__label {
+  font-family: var(--nutria-font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--nutria-color-ink-soft);
+}
+
+.nutria-progress__value {
+  font-family: var(--nutria-font-mono);
+  font-size: 0.9375rem;
+  color: var(--nutria-color-ink);
+}
+
+.nutria-progress__track {
+  height: var(--nutria-space-2);
+  border-radius: var(--nutria-radius-full);
+  background-color: var(--nutria-color-stripe);
+  overflow: hidden;
+}
+
+.nutria-progress__fill {
+  height: 100%;
+  border-radius: var(--nutria-radius-full);
+  background-color: var(--nutria-color-accent);
+  transition: width var(--nutria-transition-duration-base) var(--nutria-ease-out);
+}
