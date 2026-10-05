@@ -70,3 +70,55 @@ import { Button } from '@nutria/design-system';``r
 <Button variant="primary">Editar afiliado</Button>
 <Button variant="outline">Ver historial laboral</Button>
 <Button variant="danger-outline">Desactivar</Button>``
+## Badge
+
+Componente Badge reutilizable para representar estados. Es presentacional: recibe `variant` y muestra el estado, no administra estado interno. Utiliza Design Tokens existentes.
+
+### Variantes disponibles
+
+- success - Estado correcto/activo (por defecto)
+- pending - Estado en espera
+- danger - Estado de error/inactivo
+
+### Importación
+
+```tsx
+import { Badge } from '@nutria/design-system';
+```
+
+### Ejemplos de uso
+
+```tsx
+<Badge variant="success">Activo</Badge>
+<Badge variant="pending">Pendiente</Badge>
+<Badge variant="danger">Inactivo</Badge>
+```
+
+`variant` es opcional y su valor por defecto es `success`.
+
+### Ejemplo interactivo con useState
+
+Badge no administra su propio estado: quien lo consume decide qué `variant` enviar mediante props. Un showcase puede cambiar la variante en tiempo de ejecución con `useState`:
+
+```tsx
+import { useState } from 'react';
+import { Badge, type BadgeVariant } from '@nutria/design-system';
+
+export const StatusDemo = () => {
+  const [status, setStatus] = useState<BadgeVariant>('success');
+
+  return (
+    <div>
+      <button onClick={() => setStatus('success')}>Activo</button>
+      <button onClick={() => setStatus('pending')}>Pendiente</button>
+      <button onClick={() => setStatus('danger')}>Inactivo</button>
+
+      <Badge variant={status}>Estado actual</Badge>
+    </div>
+  );
+};
+```
+
+Flujo: interacción del usuario -> setStatus(...) -> React actualiza el estado -> el showcase vuelve a renderizar -> Badge recibe una nueva prop variant -> Badge cambia visualmente.
+
+Ejemplo completo en src/examples/BadgeExample.tsx.

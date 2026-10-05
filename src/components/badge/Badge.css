@@ -1,0 +1,38 @@
+.nutria-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nutria-space-1);
+  box-sizing: border-box;
+  padding: var(--nutria-space-1) var(--nutria-space-2);
+  border-radius: var(--nutria-radius-full);
+  font-family: var(--nutria-font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nutria-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--nutria-radius-full);
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.nutria-badge--success {
+  background-color: var(--nutria-color-success-soft);
+  color: var(--nutria-color-success);
+}
+
+.nutria-badge--pending {
+  background-color: var(--nutria-color-amber-soft);
+  color: var(--nutria-color-amber);
+}
+
+.nutria-badge--danger {
+  background-color: var(--nutria-color-danger-soft);
+  color: var(--nutria-color-danger);
+}
