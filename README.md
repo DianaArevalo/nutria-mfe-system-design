@@ -122,3 +122,45 @@ export const StatusDemo = () => {
 Flujo: interacción del usuario -> setStatus(...) -> React actualiza el estado -> el showcase vuelve a renderizar -> Badge recibe una nueva prop variant -> Badge cambia visualmente.
 
 Ejemplo completo en src/examples/BadgeExample.tsx.
+## Card
+
+Componente Card reutilizable: un contenedor visual para agrupar información relacionada. Es presentacional y agnóstico del dominio: recibe `children` y no conoce ningún otro componente del Design System. Utiliza Design Tokens existentes.
+
+### Props
+
+| Prop        | Tipo                                 | Default | Descripcion                                                 |
+| ----------- | ------------------------------------ | ------- | ----------------------------------------------------------- |
+| `children`  | `React.ReactNode`                    | -       | Contenido a renderizar dentro de la Card                    |
+| `className` | `string`                             | `''`    | Clases adicionales, se concatenan a `nutria-card`          |
+| ...rest     | `React.HTMLAttributes<HTMLDivElement>` | -     | Atributos HTML del `<div>`: `id`, `role`, `aria-*`, `data-*`, `style`, ... |
+
+No tiene variantes: es un componente base y sencillo.
+
+### Importación
+
+```tsx
+import { Card } from '@nutria/design-system';
+```
+
+### Ejemplos de uso
+
+```tsx
+<Card>
+  <h2>Información del afiliado</h2>
+  <p>Datos del afiliado...</p>
+</Card>
+```
+
+Composición con otros componentes del Design System. Card no depende de ellos, solo los contiene:
+
+```tsx
+<Card>
+  <Heading level="h3">María Rodríguez</Heading>
+
+  <Badge variant="success">Activo</Badge>
+
+  <Button variant="outline">Ver detalle</Button>
+</Card>
+```
+
+Ejemplo completo en src/examples/CardExample.tsx.

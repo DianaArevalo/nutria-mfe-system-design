@@ -1,0 +1,9 @@
+.nutria-card {
+  box-sizing: border-box;
+  background-color: var(--nutria-color-paper-raised);
+  border: var(--nutria-border-width) solid var(--nutria-color-line);
+  border-radius: var(--nutria-radius-md);
+  padding: var(--nutria-space-6);
+  font-family: var(--nutria-font-body);
+  color: var(--nutria-color-ink);
+}
