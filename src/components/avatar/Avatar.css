@@ -1,0 +1,41 @@
+.nutria-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: var(--nutria-radius-full);
+  background-color: var(--nutria-color-accent-soft);
+  color: var(--nutria-color-accent);
+  font-family: var(--nutria-font-mono);
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.nutria-avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nutria-avatar--sm {
+  width: var(--nutria-space-6);
+  height: var(--nutria-space-6);
+  font-size: 0.75rem;
+}
+
+.nutria-avatar--md {
+  width: var(--nutria-space-8);
+  height: var(--nutria-space-8);
+  font-size: 0.875rem;
+}
+
+.nutria-avatar--lg {
+  width: var(--nutria-space-12);
+  height: var(--nutria-space-12);
+  font-size: 1rem;
+}

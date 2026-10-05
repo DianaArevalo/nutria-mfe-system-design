@@ -164,3 +164,64 @@ Composición con otros componentes del Design System. Card no depende de ellos, 
 ```
 
 Ejemplo completo en src/examples/CardExample.tsx.
+## Avatar
+
+Componente Avatar reutilizable para representar visualmente a una persona o usuario. Muestra una imagen cuando se entrega `src` y, cuando no existe, muestra un fallback con las iniciales del `name`. Es presentacional, agnóstico del dominio y no realiza ninguna llamada HTTP. Utiliza Design Tokens existentes.
+
+### Props
+
+| Prop        | Tipo                                   | Default | Descripcion                                                          |
+| ----------- | -------------------------------------- | ------- | -------------------------------------------------------------------- |
+| `src`       | `string`                               | -       | URL de la imagen. Si no se entrega, se muestran las iniciales       |
+| `alt`       | `string`                               | `name`  | Texto alternativo de la imagen. Si no se entrega se usa `name` o `''` |
+| `name`      | `string`                               | -       | Nombre completo, usado para generar las iniciales y el `aria-label` |
+| `size`      | `'sm' \| 'md' \| 'lg'`                 | `'md'`  | Tamaño del avatar                                                    |
+| `className` | `string`                               | `''`    | Clases adicionales, se concatenan a `nutria-avatar`                  |
+| ...rest     | `React.HTMLAttributes<HTMLSpanElement>` | -       | Atributos HTML del `<span>` contenedor: `id`, `role`, `aria-*`, `data-*`, ... |
+
+Los atributos de accesibilidad del consumidor se aplican al contenedor y tienen prioridad sobre los valores por defecto.
+
+### Tamaños
+
+| Size | Dimensiones                  |
+| ---- | ---------------------------- |
+| `sm` | `--nutria-space-6` (1.5rem)  |
+| `md` | `--nutria-space-8` (2rem)    |
+| `lg` | `--nutria-space-12` (3rem)   |
+
+### Fallback de iniciales
+
+Cuando no se entrega `src`, el Avatar renderiza las iniciales del `name`: la primera letra de la primera palabra más la primera letra de la última palabra, en mayúsculas. Con una sola palabra se muestra un único carácter.
+
+| `name`                      | Iniciales |
+| --------------------------- | --------- |
+| `Oscar Tovar`               | `OT`      |
+| `Maria Rodriguez`           | `MR`      |
+| `Pedro`                     | `P`       |
+| `Maria Fernanda Rodriguez` | `MR`      |
+
+La función `getInitials` también está exportada por si se requiere reutilizarla.
+
+Accesibilidad del fallback: el contenedor usa `role="img"` y `aria-label` con el `name`, de modo que se anuncia el nombre y no las iniciales.
+
+### Importación
+
+```tsx
+import { Avatar } from '@nutria/design-system';
+```
+
+### Ejemplos de uso
+
+```tsx
+<Avatar src="/avatar.jpg" alt="Oscar Tovar" name="Oscar Tovar" />
+
+<Avatar name="Oscar Tovar" />
+```
+
+```tsx
+<Avatar size="sm" name="Oscar Tovar" />
+<Avatar size="md" name="Oscar Tovar" />
+<Avatar size="lg" name="Oscar Tovar" />
+```
+
+Ejemplo completo en src/examples/AvatarExample.tsx.
