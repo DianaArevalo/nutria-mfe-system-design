@@ -2,7 +2,8 @@
 
 Design System oficial de NUTRIA. Provee identidad visual y tokens reutilizables para los proyectos frontend de NUTRIA.
 
-## Design Tokens
+<details>
+<summary><strong>Design Tokens</strong></summary>
 
 Los Design Tokens son variables semánticas que centralizan decisiones visuales (colores, tipografías, espaciados, radios, etc.). Su objetivo es garantizar consistencia visual, facilitar el mantenimiento y evitar hardcodear valores en componentes.
 
@@ -51,7 +52,10 @@ Todos los tokens usan el prefijo --nutria- para asegurar namespace y evitar coli
 Los nombres son agnósticos del dominio (no incluyen conceptos como "afiliado", "aporte", "empresa", etc.) para mantener el Design System reutilizable.
 
 
-## Button
+</details>
+
+<details>
+<summary><strong>Button</strong></summary>
 
 Componente Button reutilizable con variantes definidas según el diseño visual de NUTRIA. Utiliza Design Tokens existentes.
 
@@ -70,7 +74,11 @@ import { Button } from '@nutria/design-system';``r
 <Button variant="primary">Editar afiliado</Button>
 <Button variant="outline">Ver historial laboral</Button>
 <Button variant="danger-outline">Desactivar</Button>``
-## Badge
+
+</details>
+
+<details>
+<summary><strong>Badge</strong></summary>
 
 Componente Badge reutilizable para representar estados. Es presentacional: recibe `variant` y muestra el estado, no administra estado interno. Utiliza Design Tokens existentes.
 
@@ -122,7 +130,11 @@ export const StatusDemo = () => {
 Flujo: interacción del usuario -> setStatus(...) -> React actualiza el estado -> el showcase vuelve a renderizar -> Badge recibe una nueva prop variant -> Badge cambia visualmente.
 
 Ejemplo completo en src/examples/BadgeExample.tsx.
-## Card
+
+</details>
+
+<details>
+<summary><strong>Card</strong></summary>
 
 Componente Card reutilizable: un contenedor visual para agrupar información relacionada. Es presentacional y agnóstico del dominio: recibe `children` y no conoce ningún otro componente del Design System. Utiliza Design Tokens existentes.
 
@@ -164,7 +176,11 @@ Composición con otros componentes del Design System. Card no depende de ellos, 
 ```
 
 Ejemplo completo en src/examples/CardExample.tsx.
-## Avatar
+
+</details>
+
+<details>
+<summary><strong>Avatar</strong></summary>
 
 Componente Avatar reutilizable para representar visualmente a una persona o usuario. Muestra una imagen cuando se entrega `src` y, cuando no existe, muestra un fallback con las iniciales del `name`. Es presentacional, agnóstico del dominio y no realiza ninguna llamada HTTP. Utiliza Design Tokens existentes.
 
@@ -225,7 +241,11 @@ import { Avatar } from '@nutria/design-system';
 ```
 
 Ejemplo completo en src/examples/AvatarExample.tsx.
-## Progress
+
+</details>
+
+<details>
+<summary><strong>Progress</strong></summary>
 
 Componente Progress reutilizable para representar el avance de una tarea. Muestra una barra cuyo ancho es un **valor derivado** de las props `value` y `max`. Es presentacional, agnóstico del dominio y no contiene estado interno. Utiliza Design Tokens existentes.
 
@@ -301,7 +321,11 @@ const [value, setValue] = useState(60);
 Flujo: click -> `setValue(prev => ...)` con actualización funcional -> React actualiza el estado -> `ProgressExample` vuelve a renderizar -> `Progress` recibe un nuevo `value` por props -> recalcula el `percentage` -> la barra se actualiza.
 
 Ejemplo completo en src/examples/ProgressExample.tsx.
-## Table
+
+</details>
+
+<details>
+<summary><strong>Table</strong></summary>
 
 Componente Table reutilizable para representar información tabular. Se compone con subcomponentes semánticos en lugar de una lista larga de props, de modo que el consumidor decide la estructura de filas y columnas. Utiliza Design Tokens existentes.
 
@@ -363,7 +387,11 @@ Para pantallas angostas se puede envolver en un contenedor con overflow horizont
 ```
 
 Ejemplo completo en src/examples/TableExample.tsx.
-## Input
+
+</details>
+
+<details>
+<summary><strong>Input</strong></summary>
 
 Componente Input reutilizable basado en el elemento nativo `<input>`. Es presentacional: no tiene estado interno ni realiza búsquedas. El consumidor decide cómo se controla el valor y qué se hace con él.
 
@@ -435,7 +463,11 @@ const filtered = affiliates.filter((afiliado) => afiliado.nombre.toLowerCase().i
 ```
 
 Ejemplo completo en src/examples/InputExample.tsx.
-## Breadcrumb
+
+</details>
+
+<details>
+<summary><strong>Breadcrumb</strong></summary>
 
 Componente Breadcrumb reutilizable para representar navegación jerárquica. Se compone con `Breadcrumb.Item` y usa elementos HTML semánticos: `<nav>` para el contenedor, `<ol>` para la lista, `<li>` para cada nivel y `<a>` para los enlaces.
 
@@ -480,3 +512,4 @@ import { Breadcrumb } from '@nutria/design-system';
 - El item actual no es enlace y se marca con `aria-current="page"`.
 
 Ejemplo completo en src/examples/BreadcrumbExample.tsx.
+</details>
