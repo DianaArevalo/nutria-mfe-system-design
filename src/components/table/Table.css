@@ -1,0 +1,43 @@
+.nutria-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--nutria-color-paper-raised);
+  border: var(--nutria-border-width) solid var(--nutria-color-line);
+  border-radius: var(--nutria-radius-md);
+  overflow: hidden;
+  font-family: var(--nutria-font-body);
+  color: var(--nutria-color-ink);
+}
+
+.nutria-table__header .nutria-table__head {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--nutria-color-ink-soft);
+  background-color: var(--nutria-color-paper);
+}
+
+.nutria-table__head,
+.nutria-table__cell {
+  padding: var(--nutria-space-3) var(--nutria-space-4);
+  border-bottom: var(--nutria-border-width) solid var(--nutria-color-line);
+  vertical-align: middle;
+  transition: background-color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out);
+}
+
+.nutria-table__head {
+  white-space: nowrap;
+}
+
+.nutria-table__cell {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.nutria-table__row:last-child .nutria-table__cell {
+  border-bottom: none;
+}
+
+.nutria-table__row:hover .nutria-table__cell {
+  background-color: var(--nutria-color-paper);
+}

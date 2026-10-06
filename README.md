@@ -301,3 +301,65 @@ const [value, setValue] = useState(60);
 Flujo: click -> `setValue(prev => ...)` con actualización funcional -> React actualiza el estado -> `ProgressExample` vuelve a renderizar -> `Progress` recibe un nuevo `value` por props -> recalcula el `percentage` -> la barra se actualiza.
 
 Ejemplo completo en src/examples/ProgressExample.tsx.
+## Table
+
+Componente Table reutilizable para representar información tabular. Se compone con subcomponentes semánticos en lugar de una lista larga de props, de modo que el consumidor decide la estructura de filas y columnas. Utiliza Design Tokens existentes.
+
+No incluye sorting, paginación, filtering ni selección de filas. Es un componente presentacional.
+
+### Composición
+
+| Subcomponente  | Elemento HTML | Propiedades HTML                                |
+| -------------- | ------------- | ----------------------------------------------- |
+| `Table`        | `<table>`     | `React.TableHTMLAttributes<HTMLTableElement>`   |
+| `Table.Header` | `<thead>`     | `React.HTMLAttributes<HTMLTableSectionElement>` |
+| `Table.Body`   | `<tbody>`     | `React.HTMLAttributes<HTMLTableSectionElement>` |
+| `Table.Row`    | `<tr>`        | `React.HTMLAttributes<HTMLTableRowElement>`     |
+| `Table.Head`   | `<th>`        | `React.ThHTMLAttributes<HTMLTableCellElement>`  |
+| `Table.Cell`   | `<td>`        | `React.TdHTMLAttributes<HTMLTableCellElement>`  |
+
+Todos aceptan `children`, `className` (se concatena a su clase base) y los atributos HTML correspondientes, incluidos `aria-*` y `data-*`.
+
+`Table.Head` renderiza `<th>` con `scope="col"` por defecto, valor que puede ser sobrescrito por el consumidor.
+
+### Importación
+
+```tsx
+import { Table } from '@nutria/design-system';
+```
+
+Los subcomponentes también están disponibles de forma individual (`TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell`) por si se prefieren imports separados.
+
+### Ejemplo de uso
+
+```tsx
+<Table aria-label="Afiliados">
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Afiliado</Table.Head>
+      <Table.Head>Estado</Table.Head>
+    </Table.Row>
+  </Table.Header>
+
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Oscar Tovar</Table.Cell>
+      <Table.Cell>
+        <Badge variant="success">Activo</Badge>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
+
+Table es solo semántica y estilo: no conoce Badge, Typography ni ningún otro componente. La composición la define quien la usa.
+
+Para pantallas angostas se puede envolver en un contenedor con overflow horizontal:
+
+```tsx
+<div style={{ overflowX: 'auto' }}>
+  <Table>...</Table>
+</div>
+```
+
+Ejemplo completo en src/examples/TableExample.tsx.
