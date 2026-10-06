@@ -363,3 +363,75 @@ Para pantallas angostas se puede envolver en un contenedor con overflow horizont
 ```
 
 Ejemplo completo en src/examples/TableExample.tsx.
+## Input
+
+Componente Input reutilizable basado en el elemento nativo `<input>`. Es presentacional: no tiene estado interno ni realiza búsquedas. El consumidor decide cómo se controla el valor y qué se hace con él.
+
+No incluye debounce, llamadas a API, paginación ni filtros avanzados.
+
+### Props
+
+| Prop        | Tipo                                    | Default | Descripción                                                            |
+| ----------- | --------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `type`      | `string`                                | `'text'` | Tipo de input nativo                                                  |
+| `className` | `string`                                | `''`    | Clases adicionales, se concatenan a `nutria-input`                    |
+| ...rest     | `Omit<React.InputHTMLAttributes<HTMLInputElement>, 'children'>` | -   | `value`, `onChange`, `placeholder`, `disabled`, `id`, `name`, `aria-*`, `data-*`, ... |
+
+El componente no declara props propias: reutiliza la interfaz de React. La única diferencia es que `children` se omite de la interfaz, porque `<input>` es un elemento vacío y React no admite hijos.
+
+### Estados
+
+| Estado   | Cómo se activa                                          |
+| -------- | ------------------------------------------------------- |
+| default  | -                                                       |
+| hover    | puntero sobre el input habilitado                       |
+| focus    | el input recibe foco, con outline visible               |
+| disabled | `disabled`                                              |
+| invalid  | `aria-invalid="true"`                                   |
+
+El estado invalid se activa con `aria-invalid`, el patrón accesible, sin agregar una prop nueva al Design System.
+
+La etiqueta visual va fuera del Input, con `<label htmlFor>` y el `id` del input:
+
+```tsx
+<label htmlFor="buscar-afiliado">Nombre del afiliado</label>
+
+<Input
+  id="buscar-afiliado"
+  name="afiliado"
+  type="search"
+  value={search}
+  onChange={handleChange}
+  placeholder="Buscar afiliado"
+/>
+```
+
+### Importación
+
+```tsx
+import { Input } from '@nutria/design-system';
+```
+
+### Input controlado
+
+`value` y `onChange` se combinan con `useState` en el componente que consume Input:
+
+```tsx
+const [search, setSearch] = useState('');
+
+<Input
+  value={search}
+  onChange={(event) => setSearch(event.target.value)}
+  placeholder="Buscar afiliado"
+/>
+```
+
+Flujo: el usuario escribe -> el navegador dispara `onChange` -> `setSearch` actualiza el estado -> el ejemplo vuelve a renderizar -> `Input` recibe el nuevo `value` por props.
+
+El filtrado de la lista es un valor derivado del estado, no otro estado:
+
+```tsx
+const filtered = affiliates.filter((afiliado) => afiliado.nombre.toLowerCase().includes(search.toLowerCase()));
+```
+
+Ejemplo completo en src/examples/InputExample.tsx.

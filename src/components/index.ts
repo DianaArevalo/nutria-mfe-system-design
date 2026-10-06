@@ -5,4 +5,5 @@ export * from './card';
 export * from './avatar';
 export * from './progress';
 export * from './table';
+export * from './input';
 

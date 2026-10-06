@@ -1,0 +1,40 @@
+.nutria-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--nutria-space-2) var(--nutria-space-3);
+  border: var(--nutria-border-width) solid var(--nutria-color-line);
+  border-radius: var(--nutria-radius-md);
+  background-color: var(--nutria-color-paper-raised);
+  color: var(--nutria-color-ink);
+  font-family: var(--nutria-font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: border-color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out),
+              background-color var(--nutria-transition-duration-fast) var(--nutria-ease-in-out);
+}
+
+.nutria-input::placeholder {
+  color: var(--nutria-color-ink-soft);
+}
+
+.nutria-input:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--nutria-color-line) 70%, var(--nutria-color-ink) 30%);
+}
+
+.nutria-input:focus {
+  outline: var(--nutria-focus-outline-width) solid var(--nutria-color-accent);
+  outline-offset: var(--nutria-focus-outline-offset);
+  border-color: var(--nutria-color-accent);
+}
+
+.nutria-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--nutria-color-paper);
+}
+
+.nutria-input[aria-invalid="true"] {
+  border-color: var(--nutria-color-danger);
+  background-color: var(--nutria-color-danger-soft);
+}
