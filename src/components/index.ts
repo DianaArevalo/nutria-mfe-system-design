@@ -6,4 +6,5 @@ export * from './avatar';
 export * from './progress';
 export * from './table';
 export * from './input';
+export * from './breadcrumb';
 

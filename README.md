@@ -435,3 +435,48 @@ const filtered = affiliates.filter((afiliado) => afiliado.nombre.toLowerCase().i
 ```
 
 Ejemplo completo en src/examples/InputExample.tsx.
+## Breadcrumb
+
+Componente Breadcrumb reutilizable para representar navegación jerárquica. Se compone con `Breadcrumb.Item` y usa elementos HTML semánticos: `<nav>` para el contenedor, `<ol>` para la lista, `<li>` para cada nivel y `<a>` para los enlaces.
+
+No implementa routing: los `href` son rutas de ejemplo y el componente no navega.
+
+### Props
+
+`Breadcrumb` extiende `React.HTMLAttributes<HTMLElement>` y acepta `children`, `className` y los atributos del `<nav>`. Incluye `aria-label="Breadcrumb"` por defecto, que el consumidor puede sobrescribir.
+
+| Prop | Tipo | Default | Descripción |
+| ---- | ---- | ------- | ----------- |
+| `href` | `string` | - | Si se entrega y el item no es `current`, renderiza un `<a>` |
+| `current` | `boolean` | `false` | Marca la página actual: no renderiza enlace y usa `aria-current="page"` |
+| `children` | `React.ReactNode` | - | Texto del nivel |
+| `className` | `string` | `''` | Clases adicionales, se concatenan a `nutria-breadcrumb__item` |
+| ...rest | `React.LiHTMLAttributes<HTMLLIElement>` + `target`, `rel`, `download` | - | Atributos HTML del `<li>` y del enlace |
+
+### Importación
+
+```tsx
+import { Breadcrumb } from '@nutria/design-system';
+```
+
+### Ejemplo de uso
+
+```tsx
+<Breadcrumb>
+  <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
+  <Breadcrumb.Item href="/afiliados">Afiliados</Breadcrumb.Item>
+  <Breadcrumb.Item current>Detalle del afiliado</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+`BreadcrumbItem` también está exportado de forma individual por si se prefieren imports separados.
+
+### Accesibilidad y separadores
+
+- El `<nav>` lleva `aria-label="Breadcrumb"` como nombre accesible.
+- La lista es un `<ol>`, de modo que los lectores de pantalla anuncian la posición de cada nivel.
+- Cada nivel es un `<li>`.
+- El separador `/` es un elemento real con `aria-hidden="true"`, por lo que no se anuncia. Se oculta en el primer item con CSS, así nunca aparece al inicio ni después del último nivel.
+- El item actual no es enlace y se marca con `aria-current="page"`.
+
+Ejemplo completo en src/examples/BreadcrumbExample.tsx.
